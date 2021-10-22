@@ -215,13 +215,13 @@ const promptIntern = () => {
     },
     {
       type: "input",
-      name: "name",
-      message: "what is the name of the intern(required)",
+      name: "email",
+      message: "what is your email(required)",
       validate: (internName) => {
         if (internName) {
           return true;
         } else {
-          console.log("please enter the name of the intern");
+          console.log("please enter your email");
           return false;
         }
       },
