@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const manager = require("./team_members/manager");
 const intern = require("./team_members/intern");
 const engineer = require("./team_members/engineer");
-const generateSite = require; //generatesite
+const generateSite = require //(./generatesite)
 const fs = require("fs");
 const path = require("path");
 const { type } = require("os");
@@ -226,5 +226,38 @@ const promptIntern = () => {
         }
       },
     },
-  ]);
+    {
+      type: "input",
+      name: "school",
+      message: "what is your school's name(required)",
+      validate: (schoolName) => {
+        if (schoolName) {
+          return true;
+        } else {
+          console.log("please enter your school's name");
+          return false;
+        }
+      }
+    }
+  ]).then(answers => {
+    console.log(answers);
+    const intern = new intern(answers.name, answers.employeeId, answers.email, answers.schoolName)
+    team_members.push(intern);
+    promptMenu();
+  })
 };
+
+const buildTeam = () => {
+  console.log(`
+  ===============
+ Finish Building My Team
+  ===============
+  `);
+
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR)
+  }
+  fs.writeFileSync(outputPath, generateSite(team_members), "utf-8");
+}
+
+promptManager();
