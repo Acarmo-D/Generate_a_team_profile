@@ -15,9 +15,25 @@ const generateTeam = (team) => {
             </ul>
         </div>
         `;
-        html.push(managerHtml);
+    html.push(managerHtml);
   };
-  const generateEngineer = engineer => {
-      
+  const generateEngineer = (engineer) => {
+    console.log(engineer);
+    let engineerHtml = `
+      <div class="card" syle="width: 18rem;">
+        <div class="card-header">
+        ${engineer.name}<br/>
+      <i class ="fas fa-glasses"></i>Engineer</div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">ID: ${engineer.id}</li>
+      <li class="list-group-item">Email: <span id="email"><a href="mailto:${engineer.email}">${engineer.email}</a></span></li>
+      <li class="list-group-item">Github Username: <a target="_blank" href="https://github.com/${engineer.githubUsername}">${engineer.githubUsername}</a></li>
+      </ul>
+      </div>
+      `;
+    html.push(engineerHtml);
+  }
+  const generateIntern = intern => {
+    
   }
 };
